@@ -373,7 +373,7 @@ inline DoublyLinkedList<Data>::DoublyLinkedList(const DoublyLinkedList<Data>& so
 template<class Data>
 inline DoublyLinkedList<Data>& DoublyLinkedList<Data>::operator=(const DoublyLinkedList<Data>& rhs)
 {
-	
+	// check for self assignment
 	if (this == &rhs)
 	{
 
@@ -470,8 +470,7 @@ inline const Data& DoublyLinkedList<Data>::front() const
 template<class Data>
 inline const Data& DoublyLinkedList<Data>::back() const
 {
-	// // O: insert return statement here
-
+	
 	if (tail_ == nullptr)
 	{
 
