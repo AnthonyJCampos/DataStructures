@@ -1,6 +1,6 @@
-/** @file DoublyLinkedList.cpp
+/** @file DoublyLinkedList.h
 * @author Anthony Campos
-* @date 06/10/2022
+* @date 06/15/2022
 * @brief this header file implements a template DoublyLinkedList for pratice and exploration of concepts
 *
 */
