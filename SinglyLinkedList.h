@@ -1,4 +1,4 @@
-/** @file SinglyLinkedList.cpp
+/** @file SinglyLinkedList.h
 * @author Anthony Campos
 * @date 06/08/2022
 * @brief this header file implements a template SinglyLinkedList
