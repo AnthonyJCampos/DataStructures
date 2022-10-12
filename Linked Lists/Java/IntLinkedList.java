@@ -1,91 +1,124 @@
 public class IntLinkedList {
 
-    // attributes
-    IntNode head;
+   // attributes
+   IntNode head;
 
-    IntLinkedList(){
-        head = null;
-    } // end of default constructor
+   IntLinkedList() {
+      head = null;
+   } // end of default constructor
 
-    public boolean add(int newData){
+   public boolean add(int newData) {
 
-        if(head == null){
+      if (head == null) {
 
-            head = new IntNode(newData);
+         head = new IntNode(newData);
+         return true;
+      }
+
+      IntNode currNode = head;
+
+      while (currNode != null) {
+
+         if (currNode.next == null) {
+
+            currNode.next = new IntNode(newData);
             return true;
-        }
+         } // end if
+         currNode = currNode.next;
+      } // end while
 
-        IntNode currNode = head;
+      return false;
+   } // end add
 
-        while(currNode != null){
+   public boolean remove(int target) {
 
-            if(currNode.next == null){
+      // base case
+      if (head == null) {
+         return false;
+      }
 
-                currNode.next = new IntNode(newData);
-                return true;
-            } // end if
-            currNode = currNode.next;
-        } // end while
+      // check if head is target to remove
+      if (head.data == target) {
 
-        return false;
-    } // end add
+         if (head.next != null) {
 
-    public boolean mergeInBetween(IntLinkedList listToMerge, int start, int end){
+         } else {
 
+            head = null;
 
-        IntNode currNode = head;
-        IntNode startPosition = null;
-        IntNode endPosition = null;
-        // get start position
-        while(currNode.next != null){
+         }
 
-            if(currNode.next.data == start){
+      }
 
-                startPosition = currNode;
-                break;
-            } // end if
+      IntNode currNode = head;
 
-            currNode = currNode.next;
-        } // end while
+      while (currNode != null) {
 
-        if(startPosition == null){
-            return false;
-        } // end if
+         if (currNode.data == target) {
 
-        // get end position
+            return true;
 
-        while(currNode != null){
+         }
+      }
 
-            if(currNode.data == end){
+      return false;
+   } // end remove
 
-                endPosition = currNode;
-                break;
-            } // end if
-            currNode = currNode.next;
-        }
+   public boolean mergeInBetween(IntLinkedList listToMerge, int start, int end) {
 
-        if(endPosition == null){
+      IntNode currNode = head;
+      IntNode startPosition = null;
+      IntNode endPosition = null;
+      // get start position
+      while (currNode.next != null) {
 
-            return false;
-        } // end if
+         if (currNode.next.data == start) {
 
-        // connect end node of listToMerge to this list
+            startPosition = currNode;
+            break;
+         } // end if
 
-        // get to end of listToMerge
-        currNode = listToMerge.head;
-        while(currNode.next != null){
+         currNode = currNode.next;
+      } // end while
 
-            currNode = currNode.next;
-        }
+      if (startPosition == null) {
+         return false;
+      } // end if
 
-        currNode.next = endPosition.next;
-        // connect start position to head of listToMerge
-        startPosition.next = listToMerge.head;
+      // get end position
 
-        // release old list control
-        listToMerge.head = null;
-        return true;
+      while (currNode != null) {
 
-    } // end of mergeInBetween
+         if (currNode.data == end) {
+
+            endPosition = currNode;
+            break;
+         } // end if
+         currNode = currNode.next;
+      }
+
+      if (endPosition == null) {
+
+         return false;
+      } // end if
+
+      // connect end node of listToMerge to this list
+
+      // get to end of listToMerge
+      currNode = listToMerge.head;
+      while (currNode.next != null) {
+
+         currNode = currNode.next;
+      }
+
+      currNode.next = endPosition.next;
+      // connect start position to head of listToMerge
+      startPosition.next = listToMerge.head;
+
+      // release old list control
+      listToMerge.head = null;
+      return true;
+
+   } // end of mergeInBetween
 
 }
