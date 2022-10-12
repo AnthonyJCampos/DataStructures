@@ -2,10 +2,18 @@ public class IntLinkedList {
 
    // attributes
    IntNode head;
+   int size;
 
    IntLinkedList() {
       head = null;
+      size = 0;
    } // end of default constructor
+
+   public int length() {
+
+      return size;
+
+   } // end length
 
    public boolean add(int newData) {
 
@@ -13,6 +21,7 @@ public class IntLinkedList {
       if (head == null) {
 
          head = new IntNode(newData);
+         size++;
          return true;
       } // end if
 
@@ -23,6 +32,7 @@ public class IntLinkedList {
          if (currNode.next == null) {
 
             currNode.next = new IntNode(newData);
+            size++;
             return true;
 
          } // end if
@@ -51,7 +61,7 @@ public class IntLinkedList {
             head = null;
 
          } // end if
-
+         size--;
          return true;
 
       } // end if
@@ -76,7 +86,7 @@ public class IntLinkedList {
                   nodeToRemove.next = null; // break connection
 
                } // end if
-
+               size--;
                return true;
 
             } // end if
@@ -92,16 +102,20 @@ public class IntLinkedList {
 
    public boolean find(int target) {
 
-      // base case
-      if (head == null) {
+      IntNode currNode = head;
 
-         return false;
+      while (currNode != null) {
 
-      } // end if
+         if (currNode.data == target) {
+
+            return true;
+         } // end if
+         currNode = currNode.next;
+      }
 
       return false;
 
-   }
+   } // end of find
 
    @Override
    public String toString() {
@@ -118,6 +132,25 @@ public class IntLinkedList {
 
       return str += "]";
    } // toString
+
+   public int getMiddleElement() {
+
+      if (size < 1) {
+
+         throw new RuntimeException("list empty");
+      }
+
+      // use fast a slow approach
+      IntNode slow = head;
+      IntNode fast = head.next;
+
+      while (fast != null && fast.next != null) {
+         slow = slow.next;
+         fast = fast.next.next;
+      } // end while
+
+      return slow.data;
+   }
 
    public boolean mergeInBetween(IntLinkedList listToMerge, int start, int end) {
 
@@ -176,4 +209,19 @@ public class IntLinkedList {
 
    } // end of mergeInBetween
 
-}
+   private IntNode getMiddleNode() {
+
+      IntNode slow = head;
+      IntNode fast = head.next;
+
+      while (fast != null && fast.next != null) {
+
+         slow = slow.next;
+         fast = fast.next.next;
+
+      } // end while
+
+      return slow;
+   }
+
+} // end of IntLinkedList

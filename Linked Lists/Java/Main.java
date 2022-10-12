@@ -16,8 +16,7 @@ public class Main {
          list2.add(i);
       }
 
-      System.out.println(list1);
-
+      System.out.println(list1.getMiddleElement());
       System.out.println(list1);
 
    }
