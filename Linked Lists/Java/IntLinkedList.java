@@ -9,11 +9,12 @@ public class IntLinkedList {
 
    public boolean add(int newData) {
 
+      // base case
       if (head == null) {
 
          head = new IntNode(newData);
          return true;
-      }
+      } // end if
 
       IntNode currNode = head;
 
@@ -23,6 +24,7 @@ public class IntLinkedList {
 
             currNode.next = new IntNode(newData);
             return true;
+
          } // end if
          currNode = currNode.next;
       } // end while
@@ -35,34 +37,87 @@ public class IntLinkedList {
       // base case
       if (head == null) {
          return false;
-      }
+      } // end if
 
       // check if head is target to remove
       if (head.data == target) {
 
          if (head.next != null) {
 
+            head = head.next;
+
          } else {
 
             head = null;
 
-         }
+         } // end if
 
-      }
+         return true;
+
+      } // end if
 
       IntNode currNode = head;
 
       while (currNode != null) {
 
-         if (currNode.data == target) {
+         if (currNode.next != null) {
 
-            return true;
+            if (currNode.next.data == target) {
 
-         }
-      }
+               // check if last node
+               if (currNode.next.next == null) {
+
+                  currNode.next = null;
+
+               } else { // node is in between
+
+                  IntNode nodeToRemove = currNode.next;
+                  currNode.next = nodeToRemove.next;
+                  nodeToRemove.next = null; // break connection
+
+               } // end if
+
+               return true;
+
+            } // end if
+
+         } // end if
+
+         currNode = currNode.next;
+
+      } // end while
 
       return false;
    } // end remove
+
+   public boolean find(int target) {
+
+      // base case
+      if (head == null) {
+
+         return false;
+
+      } // end if
+
+      return false;
+
+   }
+
+   @Override
+   public String toString() {
+      String str = "[ ";
+
+      IntNode currNode = head;
+
+      while (currNode != null) {
+
+         str += String.valueOf(currNode.data) + " ";
+         currNode = currNode.next;
+
+      } // end while
+
+      return str += "]";
+   } // toString
 
    public boolean mergeInBetween(IntLinkedList listToMerge, int start, int end) {
 
