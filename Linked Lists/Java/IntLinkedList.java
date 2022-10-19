@@ -15,6 +15,12 @@ public class IntLinkedList {
 
    } // end length
 
+   /**
+    * @brief addes a int data type to the array list and increments the size by one
+    *        on successful add
+    * @param newData
+    * @return true on successful add and false of unsucessful add
+    */
    public boolean add(int newData) {
 
       // base case
@@ -42,6 +48,11 @@ public class IntLinkedList {
       return false;
    } // end add
 
+   /**
+    * @brief remove removes a requested integer from the linked list
+    * @param target
+    * @return true on successful removal, false otherwise
+    */
    public boolean remove(int target) {
 
       // base case
@@ -100,6 +111,21 @@ public class IntLinkedList {
       return false;
    } // end remove
 
+   /**
+    * @brief clear clears the Linked List and resets the size to 0
+    */
+   public void clear() {
+
+      head = null;
+      size = 0;
+
+   } // end of clear
+
+   /**
+    * @brief find finds the target if within the linked list
+    * @param target
+    * @return true on successful find, false otherwise
+    */
    public boolean find(int target) {
 
       IntNode currNode = head;
@@ -117,6 +143,10 @@ public class IntLinkedList {
 
    } // end of find
 
+   /**
+    * @brief overrriden toString method to represent a Linked List
+    *        return a string representation of the Linked List
+    */
    @Override
    public String toString() {
       String str = "[ ";
@@ -133,6 +163,10 @@ public class IntLinkedList {
       return str += "]";
    } // toString
 
+   /**
+    * @brief gets the middle element of the Link list
+    * @return the middle data memeber of the node, throws an exception otherwise
+    */
    public int getMiddleElement() {
 
       if (size < 1) {
@@ -152,6 +186,14 @@ public class IntLinkedList {
       return slow.data;
    }
 
+   /**
+    * @bief mergInBetween merges the input Linklist into the provided start and end
+    *       position
+    * @param listToMerge
+    * @param start
+    * @param end
+    * @return true if succesful merge of link list, false otherwise
+    */
    public boolean mergeInBetween(IntLinkedList listToMerge, int start, int end) {
 
       IntNode currNode = head;
@@ -209,6 +251,7 @@ public class IntLinkedList {
 
    } // end of mergeInBetween
 
+   /** haven't decided if I'm going to use this yet */
    private IntNode getMiddleNode() {
 
       IntNode slow = head;
