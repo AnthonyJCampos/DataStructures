@@ -1,8 +1,8 @@
 public class IntLinkedList {
 
    // attributes
-   IntNode head;
-   int size;
+   private IntNode head;
+   private int size;
 
    IntLinkedList() {
       head = null;
@@ -198,6 +198,7 @@ public class IntLinkedList {
          currNode.next = newNode;
 
       } // end if
+      size++;
 
    } // end of addAtIndex
 
@@ -234,6 +235,8 @@ public class IntLinkedList {
          currNode.next = currNode.next.next;
 
       } // end if
+
+      size--;
 
    } // end deleteAtIndex
 
@@ -375,8 +378,6 @@ public class IntLinkedList {
 
       } // end if
 
-      size++;
-
    } // end addAtHead
 
    private void addAtTail(int value) {
@@ -398,8 +399,6 @@ public class IntLinkedList {
          currNode.next = newNode;
 
       } // end if
-
-      size++;
 
    } // end addAtTail
 
