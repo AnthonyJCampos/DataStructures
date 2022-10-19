@@ -16,26 +16,32 @@ public class Main {
          list2.add(i);
       }
 
-      System.out.println(list1);
-      System.out.println(list1.length());
+      /* Some Test Code */
 
-      System.out.println("********************");
+      // comment out shortcut CTRL + K and then CTRL + C
+      // to uncomment CTRL + K then CTRL + U
 
-      list1.addAtIndex(0, 100);
-      System.out.println(list1.length());
-      list1.addAtIndex(5, 500);
-      list1.addAtIndex(3, 200);
-      System.out.println(list1.length());
-      System.out.println(list1);
+      // System.out.println(list1);
+      // System.out.println(list1.length());
 
-      System.out.println("********************");
+      // System.out.println("********************");
 
-      list1.deleteAtIndex(0);
-      list1.deleteAtIndex(6);
-      System.out.println(list1.length());
-      list1.deleteAtIndex(2);
-      System.out.println(list1);
-      System.out.println(list1.length());
+      // list1.addAtIndex(0, 100);
+      // System.out.println(list1.length());
+      // list1.addAtIndex(5, 500);
+      // list1.addAtIndex(3, 200);
+      // System.out.println(list1.length());
+      // System.out.println(list1);
+
+      // System.out.println("********************");
+
+      // list1.deleteAtIndex(0);
+      // list1.deleteAtIndex(6);
+      // System.out.println(list1.length());
+      // list1.deleteAtIndex(2);
+      // System.out.println(list1);
+      // System.out.println(list1.length());
+
    }
 
 }
