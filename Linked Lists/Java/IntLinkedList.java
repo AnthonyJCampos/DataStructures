@@ -435,6 +435,4 @@ public class IntLinkedList {
 
    } // end of removeAtTail
 
-   /** Linked List Cycle Problem 1 */
-
 } // end of IntLinkedList
