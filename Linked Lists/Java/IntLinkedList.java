@@ -143,6 +143,100 @@ public class IntLinkedList {
 
    } // end of find
 
+   public int getIndex(int index) {
+
+      if (head == null) {
+         throw new RuntimeException("list empty");
+      } // end if
+
+      if (index >= size) {
+         throw new RuntimeException("Out of Bounds. Size: " + size + ", index: " + index);
+      } // end if
+
+      IntNode currNode = head;
+
+      int currIndex = 0;
+      while (currNode != null && currIndex < index) {
+
+         currNode = currNode.next;
+         currIndex++;
+
+      } // end while
+
+      return currNode.data;
+   } // end getIndex
+
+   public void addAtIndex(int index, int value) {
+
+      if (index >= size) {
+         throw new RuntimeException("Out of Bounds. Size: " + size + ", index: " + index);
+      } // end if
+
+      if (index == 0) {
+
+         addAtHead(value);
+
+      } else if (index == size - 1) {
+
+         addAtTail(value);
+
+      } else { // insert in the middle of the Linked List
+
+         IntNode currNode = head;
+         int currIndex = 0;
+
+         // get the node before the index to insert at
+         while (currNode != null && currIndex < index - 1) {
+
+            currIndex++;
+            currNode = currNode.next;
+
+         } // end while
+         IntNode newNode = new IntNode(value);
+
+         newNode.next = currNode.next;
+         currNode.next = newNode;
+
+      } // end if
+
+   } // end of addAtIndex
+
+   public void deleteAtIndex(int index) {
+
+      if (head == null) {
+         throw new RuntimeException("list empty");
+      } // end if
+
+      if (index >= size) {
+         throw new RuntimeException("Out of Bounds. Size: " + size + ", index: " + index);
+      } // end if
+
+      if (index == 0) {
+
+         removeAtHead();
+
+      } else if (index == size - 1) {// remove last node
+
+         removeAtTail();
+
+      } else { // remove between nodes
+
+         IntNode currNode = head;
+         int currIndex = 0;
+         // get the node before the index to remove
+         while (currNode.next != null && currIndex < index - 1) {
+
+            currIndex++;
+            currNode = currNode.next;
+
+         } // end while
+
+         currNode.next = currNode.next.next;
+
+      } // end if
+
+   } // end deleteAtIndex
+
    /**
     * @brief overrriden toString method to represent a Linked List
     *        return a string representation of the Linked List
@@ -266,5 +360,75 @@ public class IntLinkedList {
 
       return slow;
    }
+
+   private void addAtHead(int value) {
+
+      IntNode newNode = new IntNode(value);
+      if (head.next != null) {
+
+         newNode.next = head;
+         head = newNode;
+
+      } else { // only node
+
+         head = newNode;
+
+      } // end if
+
+      size++;
+
+   } // end addAtHead
+
+   private void addAtTail(int value) {
+
+      if (head == null) {
+
+         addAtHead(value);
+
+      } else {
+
+         IntNode newNode = new IntNode(value);
+         IntNode currNode = head;
+         while (currNode.next != null) {
+
+            currNode = currNode.next;
+
+         } // end while
+
+         currNode.next = newNode;
+
+      } // end if
+
+      size++;
+
+   } // end addAtTail
+
+   private void removeAtHead() {
+
+      if (head.next != null) {
+
+         head = head.next;
+
+      } else { // only node
+
+         head = null;
+
+      } // end if
+
+   } // end of removeAtHead
+
+   private void removeAtTail() {
+
+      IntNode currNode = head;
+
+      while (currNode.next.next != null) {
+
+         currNode = currNode.next;
+
+      } // end while
+
+      currNode.next = null;
+
+   } // end if
 
 } // end of IntLinkedList
