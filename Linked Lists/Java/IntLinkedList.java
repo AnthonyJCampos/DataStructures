@@ -435,4 +435,10 @@ public class IntLinkedList {
 
    } // end of removeAtTail
 
+   /** For LeetCode Problems */
+
+   public IntNode getHead() {
+      return head;
+   }
+
 } // end of IntLinkedList
