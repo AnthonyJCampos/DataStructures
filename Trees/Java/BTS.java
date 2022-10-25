@@ -1,4 +1,4 @@
-package Trees;
+package Trees.Java;
 
 public class BTS<T extends Comparable<T>> {
 
@@ -22,21 +22,29 @@ public class BTS<T extends Comparable<T>> {
    public BTS() {
    } // end defualt constructor
 
-   public boolean add(T value) {
+   public void add(T value) {
+
+      this.root = addHelper(this.root, value);
+   }
+
+   private Node addHelper(Node root, T value) {
 
       // if empty
       if (root == null) {
          Node newNode = new Node(value);
          root = newNode;
          size++;
-         return true;
+         return root;
       } // end if
 
-      // decide if it needs to go down the left side or right side
-      // so compareTo
+      if (root.value.compareTo(value) > 1) {
+         root.left = addHelper(root.left, value);
+      } else if (root.value.compareTo(value) < 0) {
+         root.right = addHelper(root.right, value);
+      } // end if
 
+      return root;
 
-   } // end add
+   } // end addHelper
 
-   return false;
 } // end of BTS

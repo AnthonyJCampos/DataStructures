@@ -1,4 +1,4 @@
-package Trees.Java.Java;
+package Trees.Java;
 
 public class Main {
 
