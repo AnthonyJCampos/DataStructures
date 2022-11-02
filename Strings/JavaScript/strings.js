@@ -13,3 +13,30 @@ const flights =
  *    🔴 Delayed Arrival from HEL to FAO (12h05)
  *            Departure from FAO to LIS (12h30)
  */
+
+formatFlights(flights);
+
+function formatFlights(flightsString) {
+  // first break it into manageable parts
+
+  let line = flightsString.split('+');
+  for (let text of line) {
+    let formated = text.replaceAll('_', ' ');
+    let [status, from, to, time] = formated.split(';');
+    from = from.slice(0, 3).toUpperCase();
+    to = to.slice(0, 3).toUpperCase();
+    time = time.replace(':', 'h');
+    status = status.startsWith(' Delayed') ? '🔴' + status : status;
+    console.log(`${status} from ${from} to ${to} (${time})`);
+  }
+} // end formatFlights
+
+/**
+ * LeetCode String problem 1108 Defanging an IP Adress
+ *
+ * Given a valid (IPv4) IP address, return a defanged version of that IP address.
+ * A defanged IP address replaces every period "." with "[.]".
+ */
+
+const input1108One = '1.1.1.1'; // Output: "1[.]1[.]1[.]1"
+const input1108Two = '255.100.50.0'; // Output: "255[.]100[.]50[.]0"
